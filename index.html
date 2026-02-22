@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Dart Tahtası</title>
+
+<style>
+body{
+  background:#222;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  color:white;
+  font-family:Arial;
+}
+
+.tahta{
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  background:repeating-radial-gradient(
+    red 0 20px,
+    white 20px 40px
+  );
+  position:relative;
+}
+
+.kopek{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.ok{
+  width:10px;
+  height:10px;
+  background:black;
+  border-radius:50%;
+  position:absolute;
+  transform:translate(-50%,-50%);
+}
+
+.yazi{
+  margin-top:15px;
+  font-size:24px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="tahta" onclick="at(event)">
+  <img class="kopek" src="kopek.jpg">
+</div>
+
+<div class="yazi">Kadir</div>
+
+<script>
+function at(e){
+  const t = e.currentTarget;
+  const r = t.getBoundingClientRect();
+
+  const o = document.createElement("div");
+  o.className="ok";
+  o.style.left = (e.clientX - r.left)+"px";
+  o.style.top  = (e.clientY - r.top )+"px";
+
+  t.appendChild(o);
+}
+</script>
+
+</body>
+</html>
